@@ -1,20 +1,42 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RecaptchaModule } from 'ng2-recaptcha';
+import { AppRoutingModule } from './app-routing.module';
+import { TwddServiceService } from './twdd-service.service';
 
 import { AppComponent } from './app.component';
+import { NoteComponent } from './note/note.component';
+import { DetailsComponent } from './details/details.component';
+import { QaComponent } from './qa/qa.component';
+import { PopComponent } from './pop/pop.component';
+import { HistoryComponent } from './history/history.component';
+import { ExchangeComponent } from './exchange/exchange.component';
+import { FormComponent } from './form/form.component';
+import { ForgetComponent } from './forget/forget.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NoteComponent,
+    DetailsComponent,
+    QaComponent,
+    PopComponent,
+    HistoryComponent,
+    ExchangeComponent,
+    FormComponent,
+    ForgetComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    RecaptchaModule.forRoot()
   ],
-  providers: [],
+  providers: [TwddServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

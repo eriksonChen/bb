@@ -1,3 +1,171 @@
-<h1>
-  {{title}}
-</h1>
+<!--選單-->
+<app-forget [vcode]="vcode" (close)="closeForget($event)" [hidden]="!isForget" *ngIf="vcode"></app-forget>
+<nav id="nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!--<a class="navbar-brand" href="javascript:;">台灣代駕</a>-->
+      <div class="logo">
+        <a href="http://twdd.com.tw" target="_blank">
+          <img src="./assets/img/logo.png" width="40">
+        </a>
+      </div>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active" data-toggle="collapse" data-target=".nav-collapse.in"><a [routerLink]="['/']" (click)="homeBtn()">首頁</a></li>
+        <li routerLinkActive="active" data-toggle="collapse" data-target=".nav-collapse.in"><a [routerLink]="['/pop/qa']" (click)="qaBtn()">服務Q&A</a></li>
+        <li routerLinkActive="active" data-toggle="collapse" data-target=".nav-collapse.in"><a [routerLink]="['/pop/note']" (click)="noteBtn()">活動辦法</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+<!--主選單 end-->
+<div class="wrap">
+  <!--banner start-->
+  <section class="banner">
+    <div class="cont">
+      <div class="cont-left">
+        <h1>台灣代駕</h1>
+        <p>
+          愛家人，愛朋友，愛同事。<br> 
+          吃完尾牙請他們不要酒駕回家。
+        </p>
+        <div class="car">
+          <img src="./assets/img/girls.png">
+        </div>
+        <div class="line"></div>
+        <div class="arrow" (click)="onDownBtn()">
+          <img src="./assets/img/down.svg" alt="" class="icon">
+        </div>
+        <div class="banner-txt">
+          分享酒後代駕APP下載使用<br> 好友得 300元折扣，您賺 <span class="redTxt">300元</span>現金。
+        </div>
+        <button type="button" class="btn btn-secondary details-btn" [routerLink]="['/pop/details']" (click)="detailsBtn()">活動詳情</button>
+      </div>
+      <div class="cont-right">
+        <img src="./assets/img/girls.png">
+      </div>
+    </div>
+  </section>
+  <!--banner end-->
+  <!--section1 start-->
+  <section class="section1">
+    <h3 class="title">登入</h3>
+    <div class="cont">
+      <div class="cont-left">
+        <h4>會員馬上登入分享即可享現金獎勵回饋!</h4>
+        <form (ngSubmit)="onLogin()" #myform="ngForm">
+          <input id="_token" name="_token" [value]="vcode" type="hidden">
+          <div class="inputGroup">
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
+              <input type="tel" class="form-control" ngModel name="cell" maxlength="10" pattern="09[0-9]{8}" [(ngModel)]="userLogin.cell"
+                placeholder="你的手機號碼" required>
+            </div>
+            <div class="pass">
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                <input type="password" class="form-control" ngModel name="password" [(ngModel)]="userLogin.password" placeholder="密碼" required>
+              </div>
+              <span class="forgetTxt"><a href="javascript:;" (click)="forgetBtn()">忘記密碼?</a></span>
+            </div>
+          </div>
+          <recaptcha [(ngModel)]="captcha" name="captcha" required [siteKey]="recaptchaSiteKey"></recaptcha>
+          <button type="submit" class="btn btn-secondary login-btn">登入</button>
+        </form>
+      </div>
+      <div class="cont-right">
+        <h3>還不是會員?</h3>
+        <h4>馬上下載APP <br> 註冊台灣代駕會員</h4>
+        <div class="phone"><img src="./assets/img/mobile.png" alt=""></div>
+        <button type="button" class="btn btn-secondary app-btn" (click)="appBtn()">下載APP</button>
+      </div>
+    </div>
+  </section>
+  <!--section1 end-->
+  <!--section2 start-->
+  <section class="section2" *ngIf="login">
+    <h3 class="title">分享邀請碼拿現金</h3>
+    <div class="cont">
+      <div class="cont-left">
+        <img src="./assets/img/share.png" alt="">
+      </div>
+      <div class="cont-right">
+        <div class="share-txt">
+          <h4>分享邀請碼 <br> 被邀請人享三趟各100元的車資折抵，被邀請人成功使用代駕服務，邀請人享三趟各100元共計300元的現金回饋。</h4>
+        </div>
+        <div class="share-btn">
+          <button type="button" class="btn btn-secondary fb-btn" (click)="shareBtn('fb')">分享 <span><img src="./assets/img/fb-icon.svg" alt=""></span></button>
+          <button type="button" class="btn btn-secondary line-btn" (click)="shareBtn('line')">分享 <span><img src="./assets/img/line-icon.png" alt=""></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--section2 end-->
+  <!--section3 start-->
+  <section class="section3" *ngIf="login">
+    <h3 class="title">獎金查詢<span class="small-txt">邀請碼：{{code}}</span></h3>
+    <div class="boxes">
+      <div class="box">
+        <div class="history-pic">
+          <div class="sball">
+            {{user.shareTime.length}}
+          </div>
+          <img src="./assets/img/history.png" width="120">
+        </div>
+        <button type="button" class="btn btn-secondary history-btn"(click)="historyBtn()">您的邀請成功記錄</button>
+      </div>
+      <div class="box">
+        <div class="txt">被邀請人使用量</div>
+        <!--<ul class="used-list">
+          <li>還未使用共 <span class="b1">{{user.used[0]}}人</span></li>
+          <li>一次使用共 <span class="b2">{{user.used[1]}}人</span></li>
+          <li>二次使用共 <span class="b3">{{user.used[2]}}人</span></li>
+          <li>三次使用共 <span class="b4">{{user.used[3]}}人</span></li>
+        </ul>-->
+        <div class="balls">
+          <div class="ball b1"><div class="ltxt">{{user.used[0]}}<span>人</span></div>
+          <div class="stxt">還未使用</div></div>
+          <div class="ball b2"><div class="ltxt">{{user.used[1]}}<span>人</span></div>
+          <div class="stxt">一次使用</div></div>
+          <div class="ball b3"><div class="ltxt">{{user.used[2]}}<span>人</span></div>
+          <div class="stxt">二次使用</div></div>
+          <div class="ball b4"><div class="ltxt">{{user.used[3]}}<span>人</span></div>
+          <div class="stxt">三次使用</div></div>
+        </div>
+        <div class="txt2">共{{user.usedTotal}}個成功的被邀請人</div>
+      </div>
+      <div class="box">
+        <div class="info info1">
+          <span class="info-txt">累積獎金</span>
+          <span class="info-num">{{formatNumber(user.total) }}</span><span class="stxt">元</span>
+        </div>
+        <div class="info">
+          <span class="info-txt">已兌換獎金</span>
+          <span class="info-num">{{formatNumber(user.apply) }}</span><span class="stxt">元</span>
+        </div>
+        <div class="info">
+          <span class="info-txt">未兌換獎金</span>
+          <span class="info-num">{{formatNumber(user.income)}}</span><span class="stxt">元</span>
+        </div>
+        <div class="btns">
+          <button type="button" class="btn btn-secondary record-btn" (click)="exchangeBtn()">兌換記錄</button>
+          <button type="button" class="btn btn-secondary bonus-btn" (click)="getForm()">兌換獎金</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--section3 end-->
+  <app-form *ngIf="form" (closeForm) = "formClose()"></app-form>
+</div>
+<router-outlet></router-outlet>
