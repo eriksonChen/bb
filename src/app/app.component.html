@@ -38,7 +38,7 @@
         <h1>台灣代駕</h1>
         <p>
           愛家人，愛朋友，愛同事。<br> 
-          吃完尾牙請他們不要酒駕回家。
+          交際應酬後請他們不要酒駕回家。
         </p>
         <div class="car">
           <img src="./assets/img/girls.png">
@@ -48,9 +48,10 @@
           <img src="./assets/img/down.svg" alt="" class="icon">
         </div>
         <div class="banner-txt">
-          分享酒後代駕APP下載使用<br> 好友得 300元折扣，您賺 <span class="redTxt">300元</span>現金。
+          分享酒後代駕APP下載使用
+          <!--<br> 好友得 300元折扣，您賺 <span class="redTxt">300元</span>現金。-->
         </div>
-        <button type="button" class="btn btn-secondary details-btn" [routerLink]="['/pop/details']" (click)="detailsBtn()">活動詳情</button>
+        <!--<button type="button" class="btn btn-secondary details-btn" [routerLink]="['/pop/details']" (click)="detailsBtn()">活動詳情</button>-->
       </div>
       <div class="cont-right">
         <img src="./assets/img/girls.png">
@@ -63,7 +64,7 @@
     <h3 class="title">登入</h3>
     <div class="cont">
       <div class="cont-left">
-        <h4>會員馬上登入分享即可享現金獎勵回饋!</h4>
+        <h4>會員登入</h4>
         <form (ngSubmit)="onLogin()" #myform="ngForm">
           <input id="_token" name="_token" [value]="vcode" type="hidden">
           <div class="inputGroup">
