@@ -4,7 +4,7 @@
   <h3 class="title">兌換獎金</h3>
   <div class="tips">每筆申請手續費30元自獎金餘額中扣除，禮券扣除30元手續費後，金額低於100元無法兌換</div>
   <div class="money-cont-s">
-    <div class="money">{{user.income | currency:'USD':true:'1.0'}}元</div>
+    <div class="money">{{user['income'] | currency:'USD':true:'1.0'}}元</div>
     <div class="money-txt">可兌換獎金</div>
     <div class="money-pic"><img src="./assets/img/money.png" alt=""></div>
   </div>
@@ -66,7 +66,7 @@
       </form>
     </div>
     <div class="cont-right money-cont">
-      <div class="money">{{user.income | currency:'USD':true:'1.0'}}元</div>
+      <div class="money">{{user['income'] | currency:'USD':true:'1.0'}}元</div>
       <div class="money-txt">可兌換獎金</div>
       <div class="money-pic"><img src="./assets/img/money.png" alt=""></div>
     </div>
@@ -114,7 +114,7 @@
     <ul class="check-money">
       <li>
         <div class="sub">兌換獎金:</div>
-        <span>{{user.income}}</span>
+        <span>{{user['income']}}</span>
       </li>
       <li class="line">
         <div class="sub">手續費:</div>

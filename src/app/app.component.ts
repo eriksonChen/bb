@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy{
   testUser:Object = {
     UserName : "劉子莊",
     income:290,
-    shareTime:[],
+    shareTime:[{name:"erikson",time:"2017/05/05"}],
     code:"A1B2C3",
     used:[19, 12, 3, 2],
     apply:1500,

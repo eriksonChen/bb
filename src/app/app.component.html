@@ -70,13 +70,13 @@
           <div class="inputGroup">
             <div class="input-group input-group-lg">
               <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
-              <input type="tel" class="form-control" ngModel name="cell" maxlength="10" pattern="09[0-9]{8}" [(ngModel)]="userLogin.cell"
+              <input type="tel" class="form-control" ngModel name="cell" maxlength="10" pattern="09[0-9]{8}" [(ngModel)]="userLogin['cell']"
                 placeholder="你的手機號碼" required>
             </div>
             <div class="pass">
               <div class="input-group input-group-lg">
                 <span class="input-group-addon glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-                <input type="password" class="form-control" ngModel name="password" [(ngModel)]="userLogin.password" placeholder="密碼" required>
+                <input type="password" class="form-control" ngModel name="password" [(ngModel)]="userLogin['password']" placeholder="密碼" required>
               </div>
               <span class="forgetTxt"><a href="javascript:;" (click)="forgetBtn()">忘記密碼?</a></span>
             </div>
@@ -103,7 +103,7 @@
       </div>
       <div class="cont-right">
         <div class="share-txt">
-          <h4>分享邀請碼 <br> 被邀請人享三趟各100元的車資折抵，被邀請人成功使用代駕服務，邀請人享三趟各100元共計300元的現金回饋。</h4>
+          <h4>分享邀請碼 <br> 被邀請人享兩趟各100元的車資折抵，被邀請人成功使用代駕服務，邀請人享兩趟各100元共計200元的現金回饋。</h4>
         </div>
         <div class="share-btn">
           <button type="button" class="btn btn-secondary fb-btn" (click)="shareBtn('fb')">分享 <span><img src="./assets/img/fb-icon.svg" alt=""></span></button>

@@ -6,12 +6,16 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './history.component.html'
 })
 export class HistoryComponent implements OnInit {
-  user:Object={};
+  user: Object = {};
+  shareTime=[];
 
-  constructor(private twddService:TwddServiceService) { }
+  constructor(private twddService: TwddServiceService) {
+    this.user = this.twddService.getUser();
+    this.shareTime = this.user['shareTime'];
+  }
 
   ngOnInit() {
-    this.user = this.twddService.getUser();
+    
   }
 
 }
