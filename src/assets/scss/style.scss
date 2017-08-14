@@ -334,7 +334,7 @@ body {
       }
       .cont-right {
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: flex-start;
         @media #{$sml} {
           justify-content: center;
@@ -352,7 +352,7 @@ body {
         }
         .share-btn {
           position: relative;
-          margin-top: 50px;
+          margin-top: 30px;
           display: flex;
           justify-content: flex-start;
           width: 100%;
@@ -464,11 +464,11 @@ body {
         }
         .balls {
           position: relative;
-          margin: 26px auto 0;
-          width: 220px;
+          margin: 26px auto 20px;
+          width: 230px;
           display: flex;
           flex-wrap: wrap;
-          justify-content: space-between;
+          justify-content: center;
           .ball {
             width: 105px;
             height: 105px;
@@ -476,7 +476,7 @@ body {
             color: #fff;
             line-height: 1.2;
             text-align: center;
-            margin-bottom: 10px;
+            margin: 0 5px;
             font-size: 34px;
             font-weight: 100;
             display: flex;
